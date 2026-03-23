@@ -133,15 +133,3 @@ input[type="range"] {
   accent-color: #ff1e6c;
 }
 
-/* ===== RESPONSIVE OPTIONNEL ===== 
-@media (max-width: 800px) {
-  .spectacles {
-    grid-template-columns: 1fr; 
-  }
-  
-  .card img {
-    width: 150px; 
-  }
-}
-
-*/
