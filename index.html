@@ -1,0 +1,237 @@
+
+<!-- Ce devoir a été réalisé avec l'aide de l'IA sur certaines parties du code et me donner des idées d'améliorations, mais j'ai cherché à commenter chaque ligne de code pour être certain de comprendre chaque étape et retenir les méthodes classiques à utiliser-->
+
+
+
+<!DOCTYPE html>  
+<html lang="fr"> <!-- Définie la langue en Français -->
+<head> <!-- Contient les infos invisibles, surtout des liens, packages -->
+<meta charset="UTF-8"> <!-- Utile pour les accents etc... -->
+<title>Billetterie Théâtre</title> <!-- Titre de l'onglet-->
+<link rel="stylesheet" href="style.css"> <!-- Lien vers le CSS-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> <!-- Lien vers les emojis utilisés -->
+</head>
+
+<body> <!-- Partie principale du code -->
+
+<!-- MENU -->
+<header> <!-- Bandeau -->
+
+
+    <nav class="menu"> <!-- nav = balise indiquant la zone de navigation -->
+        <h2>NOTRE SÉLECTION</h2>  <!-- Titre du menu -->
+
+        <ul>  <!-- liste à puces -->
+            <li><i class="fa-solid fa-house"></i> Accueil</li> <!-- emoji + Nom de l'onglet -->
+            <li><i class="fa-solid fa-tag"></i> Réduction</li>  <!-- <li> = "list item"  un élément de la liste -->
+            <li><i class="fa-solid fa-heart"></i> Nos coups de coeur</li> <!-- <i> = balise pour afficher une icône --> 
+            <li><i class="fa-solid fa-bag-shopping"></i> Panier</li>  
+            <li><i class="fa-solid fa-star"></i> Nos recommandations</li>  
+        </ul>
+    </nav>
+</header> <!-- Fin du Bandeau -->
+
+
+<div class="container"> <!-- Boite qui contient filtres + cartes  -->
+
+<!-- FILTRES -->
+
+
+
+<aside class="filtres"> <!-- Colonne latérale de filtre   -->
+
+<div class="top-selection">
+
+<p class="nb-spectacles">145 spectacles à découvrir</p>
+
+<button class="last-minute">  <!-- Bouton en semi relief cliquable (source internet)  -->
+⏱ Dernière minute Lyon <!-- emoji (source IA)   -->
+</button>
+
+</div>
+
+
+
+
+<h3>Filtres</h3> <!-- Nom filtre gras + grand  -->
+
+<!-- Option avec volet déroulant avec 3 options (recherche de ce type de volet avec IA sur photo)  -->
+<label>Genre</label> 
+<select>  <!-- Liste des éléments  -->
+<option>Comédie</option>
+<option>Musical</option>
+<option>Drame</option>
+</select>
+
+<h4>Où ?</h4>
+<!-- Option de checkbox (recherche de ce type de checkbox avec IA sur photo)  -->
+<label><input type="checkbox"> Lyon</label><br> <label> <!--enveloppe le texte + la checkbox ensemble, ça permet de cliquer sur le texte pour cocher la case (pas juste sur la case) -->
+<label><input type="checkbox"> Annecy</label><br> <br> <!-- "break" = retour à la ligne, passe à la checkbox suivante en dessous (balise auto-fermante aussi)-->
+<label><input type="checkbox"> Chambéry</label><br>
+<label><input type="checkbox"> Bourg-en-Bresse</label>
+
+<h4>Quand ?</h4>
+
+<p>Mars 2026</p>
+
+<!-- Option de calendrier (recherche de ce type de calendrier avec IA sur photo)  -->
+<table class="calendar">
+<tr> <!-- <tr> = définit une ligne du tableau.-->
+<th>L</th><th>M</th><th>M</th><th>J</th><th>V</th><th>S</th><th>D</th> <!-- <th> = définit l'en-tête-->
+</tr>
+
+<tr>
+<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td> <!-- <td> = définit une cellule de donnée -->
+</tr>
+
+<tr>
+<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
+</tr>
+
+<td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
+</tr>
+
+<td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+</tr>
+
+<td>28</td><td>29</td><td>30</td><td>31</td>
+</tr>
+</table>
+
+
+<h4>Moment de la journée</h4>
+
+<div class="moment-buttons">
+<button>Matin</button> <!-- bouton classique -->
+<button>Après midi</button>
+<button>Soir</button>
+</div>
+
+
+
+<h4>QUEL PRIX ?</h4>
+
+<div class="price-filter">
+<input type="range" min="0" max="150"> <!-- input = champ de saisie interactif / range = curseur glissant -->
+<div class="price-values">
+<span>0€</span> <!-- valeur minimale du curseur  -->
+<span>150€</span> <!-- valeur maximale du curseur  -->
+</div>
+</div>
+
+</aside>
+
+
+
+
+<!-- LISTE DES SPECTACLES -->
+<section class="spectacles">
+
+<div class="card">
+
+<img src="https://makerslab.em-lyon.com/dww/data/shows/the-play-that-goes-wrong.jpg" alt="The Play That Goes Wrong"> <!-- source de l'image -->
+
+<div class="info">
+<h3>The Play That Goes Wrong</h3>
+<p class="theatre"><strong>Duchess Theatre</strong></p>
+<p>Catégorie : Comédie</p>
+<p class="description">Putting Mischief Theatre firmly on the map, The Play That Goes Wrong continues to leave audiences in fits of giggles at the Duchess Theatre.</p>
+<p>⭐ ⭐ ⭐ ⭐ ⭐ (16 avis)</p>
+<p class="price">$59.00 (144 tickets restants) </p>
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<img src="https://makerslab.em-lyon.com/dww/data/shows/dear-evan-hansen.jpg" alt="Dear Evan Hansen" >
+
+<div class="info">
+<h3>Dear Evan Hansen</h3>
+<p class="theatre"><strong>Noel Coward Theatre</strong></p>
+<p>Catégorie : Musical</p>
+<p class="description">The smash-hit Broadway musical Dear Evan Hansen, from the writers of La La Land and The Greatest Showman, transferred to London’s Noel Coward Theatre in November 2019. Dear Evan Hansen tickets are available on London Theatre now.</p>
+<p>⭐ ⭐ ⭐ ⭐ ⭐ (16 avis)</p>
+<p class="price">$49.00 (62 tickets restants) </p>
+</div>
+
+</div>
+
+
+
+
+<div class="card">
+  <img src="https://makerslab.em-lyon.com/dww/data/shows/pride-and-prejudice-sort-of.jpg" alt="Pride and Prejudice" >
+  <div class="info">
+    <h3>Pride and Prejudice (sort of) </h3>
+    <p class="theatre"><strong>Criterion Theatre</strong></p>
+    <p>Catégorie : Comédie</p>
+    <p class="description">It’s a truth universally acknowledged that a Jane Austen novel must be adapted - and this time, 30 years of pop hits and an irreverent all-female cast bring a bold new Pride and Prejudice to the Criterion Theatre!</p>
+    <p>⭐ ⭐ ⭐ ⭐ ⭐ (31 avis)</p>
+    <p class="price">$59.00 (291 tickets restants) </p>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="card">
+  <img src="https://makerslab.em-lyon.com/dww/data/shows/the-mirror-and-the-light.jpg" alt="The mirror and the light">
+  <div class="info">
+    <h3>The Mirror and the Light</h3>
+    <p class="theatre"><strong>Gielgud Theatre</strong></p>
+    <p>Catégorie : Pièce de théatre</p>
+    <p class="description">Show of the Week - Special prices available</p>
+    <p>⭐ ⭐ ⭐ ⭐ ☆ (20 avis)</p>
+    <p class="price">$59.00 (198 tickets restants) </p>
+  </div>
+</div>
+
+
+
+<div class="card">
+
+<img src="https://makerslab.em-lyon.com/dww/data/shows/wicked.jpg" alt="Wicked" >
+
+<div class="info">
+<h3>Wicked</h3>
+<p class="theatre"><strong>Apollo Victoria Theatre</strong></p>
+<p>Catégorie : Musical</p>
+<p class="description">Since opening on Broadway in 2003, Wicked has taken the world of musical theatre by storm.</p>
+<p>⭐ ⭐ ⭐ ⭐ ⭐ (16 avis)</p>
+<p class="price">$29.00 (249 tickets restants) </p>
+</div>
+
+</div>
+
+
+
+
+
+<div class="card">
+  <img src="https://makerslab.em-lyon.com/dww/data/shows/oleanna.jpg" alt="Oleanna">
+  <div class="info">
+    <h3>Oleanna</h3>
+    <p class="theatre"><strong>Art Theatre</strong></p>
+    <p>Catégorie : Pièce de théâtre</p>
+    <p class="description"> David Mamet’s Oleanna is in London in 2021. Oleanna is at the Arts Theatre from July 2021. Oleanna tickets are available on London Theatre now.</p>
+    <p>⭐ ⭐ ⭐ ⭐ ☆ (18 avis)</p>
+    <p class="price">$49.00 (329 tickets restants) </p>
+  </div>
+</div>
+
+
+
+
+
+
+</section>
+
+</div>
+
+</body>
+</html>

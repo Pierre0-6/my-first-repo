@@ -1,0 +1,147 @@
+/* ===== GLOBAL ===== */
+body {
+  font-family: Arial, sans-serif;  /* Police de base */
+  margin: 0;
+  background: #f5f5f5;
+}
+
+/* ===== MENU ===== */
+.menu {
+  display: flex; /* Les éléments se placent côte à côte */
+  justify-content: space-between; /* contrôle l'alignement horizontal / space-between = le premier colle à gauche, le dernier à droite. */ 
+  align-items: center;  /* contrôle l'alignement vertical / center = centré verticalement */ 
+  background: white;
+  padding: 15px; /* espace intérieur entre le bord de l'élément et son contenu */
+  border-bottom: 1px solid #ddd;  /* ajoute une bordure uniquement en bas de l'élément */
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+  gap: 40px; /* espace entre chaque élément */
+  margin: 0;
+  padding: 0;
+}
+
+.menu li { 
+  cursor: pointer; /* permet d'afficher un pointeur à la place de la souris pour sélectionner le menu */
+}
+
+/* ===== STRUCTURE PAGE ===== */
+.container {
+  display: flex;
+}
+
+/* ===== FILTRES ===== */
+.filtres {
+  width: 250px;
+  background: #fafafa;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.calendar {
+  border-collapse: collapse; /*définit comment les bordures des cellules d'un tableau se comportent / fusionne les bordures adjacentes en une seule. */
+}
+
+.calendar td, .calendar th {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center;
+}
+
+/* ===== SPECTACLES ===== */
+.spectacles {
+  flex: 1;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* grid-template-columns: définit le nombre et la taille des colonnes.
+                                    1fr — une colonne qui prend 1 fraction de l'espace disponible.
+                                    1fr 1fr — deux colonnes de taille égale, chacune prenant la moitié de l'espace */
+  gap: 30px;
+}
+
+.nb-spectacles {  
+  color: #ff1e6c; /* Couleur choisie  */
+}
+
+/* ===== CARD ===== */
+.card {
+  display: flex;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;  /* arrondit les coins de l'élément */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* ajoute une ombre autour de l'élément */
+  align-items: center; /* centre verticalement image et texte */
+}
+
+.card img {
+  width: 200px;       /* largeur plus grande */
+  height: auto;       /* conserve les proportions verticales */
+  object-fit: cover;  /* remplissage horizontal propre */
+  margin-right: 15px;
+  border-radius: 5px; 
+}
+
+.info {
+  font-size: 14px; /* taille police */
+  flex: 1; /* texte occupe l'espace restant */
+}
+
+.price {
+  color: orange; /* couleur du prix */
+  font-weight: bold;
+}
+
+/* ===== BOUTONS MOMENT ===== */
+.moment-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.moment-buttons button {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 3px solid #1b1b2f;
+  background: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.moment-buttons button:hover {
+  background: #f3f3f3;
+}
+
+/* ===== FILTRE PRIX ===== */
+.price-filter {
+  margin-top: 10px;
+}
+
+.price-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+/* ===== BARRE ROSE ===== */
+input[type="range"] {
+  width: 100%;
+  accent-color: #ff1e6c;
+}
+
+/* ===== RESPONSIVE OPTIONNEL ===== 
+@media (max-width: 800px) {
+  .spectacles {
+    grid-template-columns: 1fr; 
+  }
+  
+  .card img {
+    width: 150px; 
+  }
+}
+
+*/
