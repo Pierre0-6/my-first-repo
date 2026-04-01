@@ -75,7 +75,7 @@ getData((data) => {
                     <p class="theatre"><strong>${show.location}</strong></p>
                     <p>Catégorie : ${categoryName}</p>
                     <p class="description">${show.description}</p>
-                    <p>⭐ ⭐ ⭐ ⭐ ⭐ (${show.reviews} avis)</p>
+                    <p>⭐ ⭐ ⭐ ⭐ ⭐ 5/5 </p>
                     <p class="price">$${show.price} (${show.tickets_remaining} tickets restants)</p>
                 </div>
             `;
