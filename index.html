@@ -10,11 +10,16 @@
 <title>Billetterie Théâtre</title> <!-- Titre de l'onglet-->
 <link rel="stylesheet" href="style.css"> <!-- Lien vers le CSS-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> <!-- Lien vers les emojis utilisés -->
+
+<script src="script.js" defer></script> <!-- Ligne permettant de synchroniser le js et que les 2 files interagissent -->
+
 </head>
 
 <body> <!-- Partie principale du code -->
 
 <!-- MENU -->
+<!-- Je n'ai pas vraiment exploité cette partie avec le js car pour les options panier, Nos recommandations, coups de coeur cela consistait 
+ seulement à filtrer au hasard certaine pièce donc je me suis concentré sur les vrais filtres -->
 <header> <!-- Bandeau -->
 
 
@@ -36,15 +41,15 @@
 
 <!-- FILTRES -->
 
-
+<!-- Filtre qui me permettra d'afficher les 4/5 dernières pièces qui seront disponibles pour cela je vais regarder la date de fin de chaque pièce et choisir les dernières -->
 
 <aside class="filtres"> <!-- Colonne latérale de filtre   -->
 
 <div class="top-selection">
 
-<p class="nb-spectacles">145 spectacles à découvrir</p>
+<p class="nb-spectacles">145 spectacles à découvrir</p>  <!-- phrases pour accrocher l'utilisateurs  -->
 
-<button class="last-minute">  <!-- Bouton en semi relief cliquable (source internet)  -->
+<button class="last-minute">  <!-- bouton classique que l'on va styliser ensuite dans le css -->
 ⏱ Dernière minute Lyon <!-- emoji (source IA)   -->
 </button>
 
@@ -55,50 +60,69 @@
 
 <h3>Filtres</h3> <!-- Nom filtre gras + grand  -->
 
-<!-- Option avec volet déroulant avec 3 options (recherche de ce type de volet avec IA sur photo)  -->
+
+<!-- Option avec volet déroulant avec 3 options (recherche de ce type de volet avec IA grâce à une photo), l'IA m'a renvoyé directement 
+ ce résultat qui est satisfaisant, j'ai ensuite rajouté un onglet "Tous" lorsque j'ai implémenté le js pour pouvoir accéder à toutes les pièces  -->
 <label>Genre</label> 
-<select>  <!-- Liste des éléments  -->
-<option>Comédie</option>
-<option>Musical</option>
-<option>Drame</option>
+<select class="category-select"> 
+  <option value="">Tous</option> 
+  <option value="comedies">Comedies</option> <!-- Filtre sur la catégorie de la pièce dans le dataset, j'aurais pu générer automatiquement 
+  les différentes options mais il n'y en avait que 3 donc ça se faisait bien aussi à la main  -->
+  <option value="musicals">Musicals</option>
+  <option value="plays">Plays</option>
+</select>
 </select>
 
-<h4>Où ?</h4>
-<!-- Option de checkbox (recherche de ce type de checkbox avec IA sur photo)  -->
-<label><input type="checkbox"> Lyon</label><br> <label> <!--enveloppe le texte + la checkbox ensemble, ça permet de cliquer sur le texte pour cocher la case (pas juste sur la case) -->
-<label><input type="checkbox"> Annecy</label><br> <br> <!-- "break" = retour à la ligne, passe à la checkbox suivante en dessous (balise auto-fermante aussi)-->
-<label><input type="checkbox"> Chambéry</label><br>
-<label><input type="checkbox"> Bourg-en-Bresse</label>
+
+  <!-- FILTRE THÉÂTRE -->
+<label>Où ?</label>
+  <select class="theatre-select">
+    <!-- Les options seront générées dynamiquement depuis le js, plus rapide que devoir taper tous les théâtres 1 par 1, on voit ici la puissance du js-->
+  </select>
 
 <h4>Quand ?</h4>
 
 <p>Mars 2026</p>
 
-<!-- Option de calendrier (recherche de ce type de calendrier avec IA sur photo)  -->
-<table class="calendar">
-<tr> <!-- <tr> = définit une ligne du tableau.-->
-<th>L</th><th>M</th><th>M</th><th>J</th><th>V</th><th>S</th><th>D</th> <!-- <th> = définit l'en-tête-->
-</tr>
 
-<tr>
-<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td> <!-- <td> = définit une cellule de donnée -->
-</tr>
+<!-- Option de calendrier (recherche de ce type de calendrier avec IA sur photo), il m'a donné le bon résultat et j'ai juste rajouté tous les jours du mois -->
+<!-- Le premier calendrier était non cliquable j'ai donc ajouté "data_day pour creer un vrai calendrier cliquable" -->
 
-<tr>
-<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
-</tr>
-
-<td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
-</tr>
-
-<td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
-</tr>
-
-<td>28</td><td>29</td><td>30</td><td>31</td>
-</tr>
+<!-- Explication de la syntaxe  -->
+<!--table = crée un tableau
+tr = une ligne
+th = case titre (jours)
+td = case normale (dates)
+data-day = info cachée pour le code (JS)
+chiffre = ce que voit l’utilisateur
+-->
+ <table class="calendar">
+  <tr>
+    <th>L</th><th>M</th><th>M</th><th>J</th><th>V</th><th>S</th><th>D</th>
+  </tr>
+  <tr>
+    <td data-day="1">1</td><td data-day="2">2</td><td data-day="3">3</td>
+    <td data-day="4">4</td><td data-day="5">5</td><td data-day="6">6</td><td data-day="7">7</td>
+  </tr>
+  <tr>
+    <td data-day="8">8</td><td data-day="9">9</td><td data-day="10">10</td>
+    <td data-day="11">11</td><td data-day="12">12</td><td data-day="13">13</td><td data-day="14">14</td>
+  </tr>
+  <tr>
+    <td data-day="15">15</td><td data-day="16">16</td><td data-day="17">17</td>
+    <td data-day="18">18</td><td data-day="19">19</td><td data-day="20">20</td><td data-day="21">21</td>
+  </tr>
+  <tr>
+    <td data-day="22">22</td><td data-day="23">23</td><td data-day="24">24</td>
+    <td data-day="25">25</td><td data-day="26">26</td><td data-day="27">27</td><td data-day="28">28</td>
+  </tr>
+  <tr>
+    <td data-day="29">29</td><td data-day="30">30</td><td data-day="31">31</td>
+  </tr>
 </table>
 
 
+<!-- J'ai laissé ce filtre même si il ne fonctionne pas dynamiquement avec js, car je n'ai pas les données sur les heures de passage au théâtre -->
 <h4>Moment de la journée</h4>
 
 <div class="moment-buttons">
@@ -109,27 +133,29 @@
 
 
 
-<h4>QUEL PRIX ?</h4>
+<h4>QUEL PRIX ?</h4> <!-- Petit titre qui affiche "QUEL PRIX ?" -->
 
 <div class="price-filter">
-<input type="range" min="0" max="150"> <!-- input = champ de saisie interactif / range = curseur glissant -->
-<div class="price-values">
-<span>0€</span> <!-- valeur minimale du curseur  -->
-<span>150€</span> <!-- valeur maximale du curseur  -->
-</div>
+  <input type="range" min="0" max="150" value="150">   <!-- Le slider : tu peux glisser pour choisir un prix entre 0 et 150, 
+       et par défaut il est déjà à 150 -->
+  <div class="price-values"> <!-- Zone qui montre les valeurs mini/maxi du prix -->
+    <span>0€</span> <!-- La valeur minimale affichée : 0€ -->
+    <span id="max-price">150€</span> <!-- La valeur max affichée -->
+  </div>
 </div>
 
 </aside>
 
 
+<!-- Mise sous commentaire par rapport à la première version pour générer automatiquement les cartes par java script-->
 
 
 <!-- LISTE DES SPECTACLES -->
 <section class="spectacles">
 
-<div class="card">
+<!-- <div class="card">
 
-<img src="https://makerslab.em-lyon.com/dww/data/shows/the-play-that-goes-wrong.jpg" alt="The Play That Goes Wrong"> <!-- source de l'image -->
+<img src="https://makerslab.em-lyon.com/dww/data/shows/the-play-that-goes-wrong.jpg" alt="The Play That Goes Wrong"> source de l'image 
 
 <div class="info">
 <h3>The Play That Goes Wrong</h3>
@@ -224,7 +250,7 @@
   </div>
 </div>
 
-
+-->
 
 
 

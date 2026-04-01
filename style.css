@@ -1,23 +1,23 @@
-/* ===== GLOBAL ===== */
+/*  GLOBAL */
 body {
   font-family: Arial, sans-serif;  /* Police de base */
-  margin: 0;
-  background: #f5f5f5;
+  margin: 0; /* Pas de marge */
+  background: #f5f5f5 ; /* Blanc par défaut */
 }
 
-/* ===== MENU ===== */
+/* MENU */
 .menu {
   display: flex; /* Les éléments se placent côte à côte */
   justify-content: space-between; /* contrôle l'alignement horizontal / space-between = le premier colle à gauche, le dernier à droite. */ 
   align-items: center;  /* contrôle l'alignement vertical / center = centré verticalement */ 
-  background: white;
+  background: white ;
   padding: 15px; /* espace intérieur entre le bord de l'élément et son contenu */
-  border-bottom: 1px solid #ddd;  /* ajoute une bordure uniquement en bas de l'élément */
+  border-bottom: 1px solid #ddd ;  /* ajoute une bordure uniquement en bas de l'élément */
 }
 
 .menu ul {
   display: flex;
-  list-style: none;
+  list-style: none ;
   gap: 40px; /* espace entre chaque élément */
   margin: 0;
   padding: 0;
@@ -27,34 +27,88 @@ body {
   cursor: pointer; /* permet d'afficher un pointeur à la place de la souris pour sélectionner le menu */
 }
 
-/* ===== STRUCTURE PAGE ===== */
+/*STRUCTURE PAGE */
 .container {
-  display: flex;
+  display: flex ;
 }
 
-/* ===== FILTRES ===== */
+/* Caractéristiques bouton non cliqué  */
+.last-minute {
+    cursor: pointer; /* Pointeur quand on passe dessus */
+    padding: 10px 16px;
+    border: 2px solid #e74c3c ; /* coin */
+    border-radius: 8px; /* coin arrondi */
+    background-color: white ; /* fond blanc */
+    color: #e74c3c ; /* texte en rouge */
+    font-weight: bold; /* gras */
+    font-size: 14px; /* police 14 */
+    transition: all 0.2s ease ; /* Je souhaitais avoir une transition quand on clique sur le bouton, avoir quelque chose de beau visuellement 
+    j'ai demandé à l'IA d'ajouté une ligne pour faire ca et j'ai obtenu cela. J'ai gardé car je trouve cela interessant */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15); /* Je souhaitais avoir un bouton avec une ombre qui accroche davantage l'utilisateur à cliquer
+    j'ai demandé à l'IA d'ajouté une ligne pour faire ca et j'ai obtenu cela. J'ai gardé car je trouve cela interessant */
+}
+
+/* Caractéristiques quand on passe sur le bouton 
+(IA pour la structure avec la commande hover / active, hover / Selected, "je veux une structure css permettant d'obtenir 3 differents styles : style 1 bouton non cliqué, style 2 quand on passe dessus et style 3 bouton cliqué") */
+.last-minute:hover {
+    background-color: #fdecea ; /* Fonce légèrement le bouton quand on passe dessus */
+    box-shadow: 0 5px 10px rgba(231, 76, 60, 0.3); /* Modification du style / ombre */
+    transform: translateY(-1px) ; /* "Je voulais un effet bouton qui bouge quand on passe dessus", voici l'amélioration de l'IA  */
+}
+
+/* Caractéristiques lorsque le bouton est cliqué */
+.last-minute.active {
+    background-color: #e74c3c; /* J'ai inversé fond et couleur de police  */
+    color: white; /* J'ai inversé fond et couleur de police  */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* J'ai changé légèrement l'ombre ici  */
+    transform: translateY(1px) ; /* "Je voulais un effet bouton appuyé", voici l'amélioration de l'IA  */
+}
+
+
+
+
+/* FILTRES */
 .filtres {
-  width: 250px;
-  background: #fafafa;
-  padding: 20px;
-  border-right: 1px solid #ddd;
+  width: 250px; /*Taille du bloc */
+  background: #fafafa ; /* Fond blanc*/
+  padding: 20px ; /*Espaces */
+  border-right: 1px solid #ddd ; /* Bordures Grises */
 }
 
 .calendar {
-  border-collapse: collapse; /*définit comment les bordures des cellules d'un tableau se comportent / fusionne les bordures adjacentes en une seule. */
+  border-collapse: collapse ; /* définit comment les bordures des cellules d'un tableau se comportent / fusionne les bordures adjacentes en une seule. */
 }
 
-.calendar td, .calendar th {
-  border: 1px solid #ddd;
+.calendar td, .calendar th { /* Ça stylise les cellules (td) et les titres de colonnes (th).*/
+  border: 1px solid #ddd ; /*Bordure fine gris clair autour de chaque case*/
   padding: 5px;
-  text-align: center;
+  text-align: center ; /*Centre le texte (ex ici les numéros des jours)*/
 }
 
-/* ===== SPECTACLES ===== */
+
+.calendar td[data-day] { /*Cible uniquement les cellules td qui ont l’attribut data-day
+donc : les jours du mois, pas les titres */
+    cursor: pointer; /*poiteur quand on passe dessus*/
+    transition: background 0.2s;  /*changement progressif comme pour le bouton dernière minute*/
+}
+
+.calendar td[data-day]:hover {
+    background-color: #e0e0e0;  /*Se grise légèrement quand on passe dessus*/
+}
+
+.calendar td[data-day].selected {
+    background-color: #3498db ; /*Fond Bleu quand c'est cliqué */
+    color: white ; /*Texte Blanc quand c'est cliqué  */
+    border-radius: 50% ; /* Rond de couleur autour du texte */
+    font-weight: bold ; /* Police en gras */
+}
+
+
+/* SPECTACLES */
 .spectacles {
   flex: 1;
-  padding: 30px;
-  display: grid;
+  padding: 30px ;
+  display: grid ;
   grid-template-columns: 1fr 1fr;   /* grid-template-columns: définit le nombre et la taille des colonnes.
                                     1fr — une colonne qui prend 1 fraction de l'espace disponible.
                                     1fr 1fr — deux colonnes de taille égale, chacune prenant la moitié de l'espace */
@@ -65,21 +119,21 @@ body {
   color: #ff1e6c; /* Couleur choisie  */
 }
 
-/* ===== CARD ===== */
+/* CARD */
 .card {
   display: flex;
-  background: white;
+  background: white ;
   padding: 10px;
-  border-radius: 5px;  /* arrondit les coins de l'élément */
+  border-radius: 5px ; /* arrondit les coins de l'élément */
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* ajoute une ombre autour de l'élément */
-  align-items: center; /* centre verticalement image et texte */
+  align-items: center;/* centre verticalement image et texte */
 }
 
 .card img {
-  width: 200px;       /* largeur plus grande */
-  height: auto;       /* conserve les proportions verticales */
-  object-fit: cover;  /* remplissage horizontal propre */
-  margin-right: 15px;
+  width: 200px;/* largeur plus grande */
+  height: auto; /* conserve les proportions verticales */
+  object-fit: cover; /* remplissage horizontal propre */
+  margin-right: 15px ;
   border-radius: 5px; 
 }
 
@@ -93,7 +147,7 @@ body {
   font-weight: bold;
 }
 
-/* ===== BOUTONS MOMENT ===== */
+/* BOUTONS MOMENT*/
 .moment-buttons {
   display: flex;
   gap: 15px;
@@ -105,17 +159,17 @@ body {
   padding: 12px;
   font-size: 16px;
   border-radius: 8px;
-  border: 3px solid #1b1b2f;
-  background: white;
+  border: 3px solid #1b1b2f ;
+  background: white ;
   cursor: pointer;
   font-weight: bold;
 }
 
 .moment-buttons button:hover {
-  background: #f3f3f3;
+  background: #f3f3f3 ;
 }
 
-/* ===== FILTRE PRIX ===== */
+/* FILTRE PRIX */
 .price-filter {
   margin-top: 10px;
 }
@@ -127,21 +181,9 @@ body {
   font-size: 18px;
 }
 
-/* ===== BARRE ROSE ===== */
+/* BARRE ROSE */
 input[type="range"] {
-  width: 100%;
-  accent-color: #ff1e6c;
+  width: 100% ;
+  accent-color: #ff1e6c ;
 }
 
-/* ===== RESPONSIVE OPTIONNEL ===== 
-@media (max-width: 800px) {
-  .spectacles {
-    grid-template-columns: 1fr; 
-  }
-  
-  .card img {
-    width: 150px; 
-  }
-}
-
-*/
